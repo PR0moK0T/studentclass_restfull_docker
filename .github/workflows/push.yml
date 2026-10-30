@@ -22,9 +22,9 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v5
       with:
-        context: .
+        context: ./backend
+        file: ./backend/Dockerfile
         push: true
         tags: |
           ghcr.io/pr0mok0t/studentclass_restfull_docker/myapp:latest
           ghcr.io/pr0mok0t/studentclass_restfull_docker/myapp:${{ github.sha }}
-
