@@ -19,6 +19,10 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Downcase repository name
+      run: |
+        echo "IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
     - name: Build and push
       uses: docker/build-push-action@v5
       with:
@@ -26,5 +30,5 @@ jobs:
         file: ./backend/Dockerfile
         push: true
         tags: |
-          ghcr.io/pr0mok0t/studentclass_restfull_docker/myapp:latest
-          ghcr.io/pr0mok0t/studentclass_restfull_docker/myapp:${{ github.sha }}
+          ghcr.io/${{ env.IMAGE_REPOSITORY }}/myapp:latest
+          ghcr.io/${{ env.IMAGE_REPOSITORY }}/myapp:${{ github.sha }}
