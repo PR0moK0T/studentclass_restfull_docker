@@ -25,5 +25,6 @@ jobs:
         context: .
         push: true
         tags: |
-          ghcr.io/${{ github.repository }}/myapp:latest
-          ghcr.io/${{ github.repository }}/myapp:${{ github.sha }}
+          ghcr.io/pr0mok0t/studentclass_restfull_docker/myapp:latest
+          ghcr.io/pr0mok0t/studentclass_restfull_docker/myapp:${{ github.sha }}
+
